@@ -9,19 +9,28 @@ All starts with the ChosenModelTuning.py script. In this script, you load some c
 algorithm, and train the model. After the training, if the model satisfies your needs, dump it in a file using the joblib library:
 
 from joblib import dump
+
 dump(regr,”regr.joblib”)
+
 dump(xscaler,”xscaler.joblib”)
+
 dump(yscaler,”yscaler.joblib”)
+
 
 Do not forget to dump your data processing models.
 
 To be able to use the BMP280 sensor, you need to execute these steps:
 
 •	sudo apt-get install build-essential python-pip python-dev python-smbus git
+
 •	git clone https://github.com/adafruit/Adafruit_Python_GPIO.git
+
 •	cd Adafruit_Python_GPIO
+
 •	sudo python3 setup.py install
+
 •	Note: ATLAS should also be installed: sudo apt-get install libatlas-base-dev
+
 
 The Sensors_Read.py script is used to read from the sensors and return the read values. The code from it is used in the ReadSensorsAndPredict.py script, where the trained model,
 which is assumed to be saved to a file, is loaded and used to predict pollutants, based on the measured values.
